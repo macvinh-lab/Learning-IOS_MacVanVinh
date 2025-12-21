@@ -87,3 +87,33 @@ func ValidatePrice(_ text: String?){
     }
     print("Giá hợp lệ \(price)")
 }
+// =======================================================
+// MARK: - Bài 10 - Tính thành tiền
+// =======================================================
+
+func CalcTotal (priceText: String?, quantityText: String?){
+    printHeader("Bài 10")
+    guard let priceString = priceText else{
+        print("Giá tiền chưa được nhập")
+        return
+    }
+    guard let price = Double(priceString) else{
+        print("Giá tiền không hợp lệ")
+        return
+    }
+    guard let quantityString = quantityText else{
+        print("Số lượng chưa được nhập")
+        return
+    }
+    guard let quantity = Int(quantityString) else{
+        print("Số lượng sai định dạng")
+        return
+    }
+    guard quantity > 0 else{
+        print("Số lượng phải lớn hơn 0")
+        return
+    }
+    let total = price * Double(quantity)
+    print("Tổng tiền = \(total)")
+    
+}
