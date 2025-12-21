@@ -68,3 +68,22 @@ func validateSKU (_ sku: String?){
     }
     print("SKU hợp lệ \(sku)")
 }
+// =======================================================
+// MARK: - Bài 09 - Kiểm tra giá tiền
+// =======================================================
+
+func ValidatePrice(_ text: String?){
+    guard let priceText = text else{
+        print("Chưa nhập giá")
+        return
+    }
+    guard let price = Double(priceText) else{
+        print("Giá không hợp lệ")
+        return
+    }
+    guard price > 0 else{
+        print("Giá phải lớn hơn 0")
+        return
+    }
+    print("Giá hợp lệ \(price)")
+}
