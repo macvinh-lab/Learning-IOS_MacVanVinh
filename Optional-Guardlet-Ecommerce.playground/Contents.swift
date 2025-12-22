@@ -62,7 +62,7 @@ func validateSKU (_ sku: String?){
         print("Mã sản phẩm trống")
         return
     }
-    guard sku == "SKU-" else{
+    guard sku.hasPrefix("SKU-") else{
         print("Sai định dạng SKU-")
         return
     }
@@ -73,7 +73,8 @@ func validateSKU (_ sku: String?){
 // =======================================================
 
 func ValidatePrice(_ text: String?){
-    guard let priceText = text else{
+    printHeader("Bài 9")
+    guard let priceText = text, !priceText.isEmpty else{
         print("Chưa nhập giá")
         return
     }
@@ -93,7 +94,7 @@ func ValidatePrice(_ text: String?){
 
 func CalcTotal (priceText: String?, quantityText: String?){
     printHeader("Bài 10")
-    guard let priceString = priceText else{
+    guard let priceString = priceText, !priceString.isEmpty else{
         print("Giá tiền chưa được nhập")
         return
     }
@@ -116,4 +117,42 @@ func CalcTotal (priceText: String?, quantityText: String?){
     let total = price * Double(quantity)
     print("Tổng tiền = \(total)")
     
+}
+// =======================================================
+// MARK: - Bài 11 - Tạo sản phẩm
+// =======================================================
+func createProduct (sku: String?, name: String?, priceText: String?) -> Product?{
+    printHeader("Bài 11")
+    guard let sku = sku, !sku.isEmpty else {
+        print("Chưa nhập mã sản phẩm")
+        return nil
+    }
+    guard sku.hasPrefix("SKU-") else{
+        print("Mã sản phẩm không hợp lệ")
+        return nil
+    }
+    guard let name = name, !name.isEmpty else {
+        print("Chưa nhập tên")
+        return nil
+    }
+    guard let priceText = priceText, let price = Double(priceText) else{
+        print("Giá không hợp lệ")
+        return nil
+    }
+    guard price > 0 else {
+        print("Giá phải lớn hơn 0")
+        return nil
+    }
+    print("Tạo sản phẩm thành công!")
+    return Product(sku: sku, name: name, price: price)
+    
+}
+// =======================================================
+// MARK: - Chạy test chương trình
+// =======================================================
+let checkSKU = validateSKU("SKU-100")
+let checkPrice = ValidatePrice("100")
+let to = CalcTotal(priceText: "10000", quantityText: "2")
+if let product = createProduct(sku: "SKU-100", name: "Iphone 12", priceText: "10000"){
+    print("Tên sản phẩm: \(product.name), Giá tiền: \(product.price)")
 }
