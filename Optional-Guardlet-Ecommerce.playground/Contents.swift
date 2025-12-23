@@ -82,6 +82,10 @@ func validatePrice(_ text: String?){
         print("Giá không hợp lệ")
         return
     }
+    
+    var a = 9.9
+    let b = Int(a)
+    
     guard price > 0 else{
         print("Giá phải lớn hơn 0")
         return
@@ -121,7 +125,7 @@ func calcTotal (priceText: String?, quantityText: String?){
 // =======================================================
 // MARK: - Bài 11 - Tạo sản phẩm
 // =======================================================
-func createProduct (sku: String?, name: String?, priceText: String?) -> Product?{
+func createProduct (sku: String?, name: String?, priceText: String?) -> Product? {
     printHeader("Bài 11")
     guard let sku = sku, !sku.isEmpty else {
         print("Chưa nhập mã sản phẩm")
@@ -156,6 +160,35 @@ func increase (_ value: inout Int){
     value += 1
 }
 
+// =======================================================
+// MARK: - Bài 13 - Thêm sản phẩm vào giỏ hàng
+// =======================================================
+
+var cart: [String: Int] = ["SKU-001": 1]
+let priceList: [String: Double] = ["SKU-001": 120000,
+                                   "SKU-002": 99000]
+func addToCart ( sku: String?,
+                 quantityText: String?,
+                 cart: inout [String: Int],
+                 priceList: [String: Double]){
+    guard let sku = sku else {
+        print("SKU lỗi không tìm thấy")
+        return
+    }
+    for item in priceList {
+        if item.key == sku {
+            print("Không tồn tại")
+        }
+    }
+    guard let quantityText = quantityText, let quantity = Int(quantityText) else {
+        print("Số lượng không phù hợp")
+        return
+    }
+    if quantity <= 0 {
+        print("Số lượng phải lớn hơn 0")
+    }
+    
+}
 
 // =======================================================
 // MARK: - Chạy test chương trình
