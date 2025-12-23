@@ -164,21 +164,27 @@ func increase (_ value: inout Int){
 // MARK: - Bài 13 - Thêm sản phẩm vào giỏ hàng
 // =======================================================
 
-var cart: [String: Int] = ["SKU-001": 1]
+var cart: [String: Int] = ["SKU-001": 1, "SKU-002": 2]
 let priceList: [String: Double] = ["SKU-001": 120000,
                                    "SKU-002": 99000]
 func addToCart ( sku: String?,
                  quantityText: String?,
                  cart: inout [String: Int],
                  priceList: [String: Double]){
+    printHeader("Bài 13")
     guard let sku = sku else {
         print("SKU lỗi không tìm thấy")
         return
     }
-    for item in priceList {
+    /*for item in priceList {
         if item.key == sku {
             print("Không tồn tại")
+            
         }
+    }*/
+    if priceList[sku] == nil {
+        print("Sản phẩm không tồn tại!")
+        return
     }
     guard let quantityText = quantityText, let quantity = Int(quantityText) else {
         print("Số lượng không phù hợp")
@@ -187,7 +193,22 @@ func addToCart ( sku: String?,
     if quantity <= 0 {
         print("Số lượng phải lớn hơn 0")
     }
+    var update: Int = 0
+    for item in cart {
+        if item.key == sku {
+            update = item.value
+            update += quantity
+        }
+    }
+    let newQuantity = [sku : update]
+    cart.merge(newQuantity) {old, new in new}
+    print("Thêm vào giỏ hàng thành công")
+    cart.merge(["SKU": 1000]) { _, new in new }
+    print("Giỏ hàng hiện tại \(cart)")
+
     
+    
+
 }
 
 // =======================================================
@@ -204,3 +225,6 @@ var number = 10
 print("value trước khi bị thay đổi \(number)")
 increase(&number)
 print("value sau khi bị thay đổi \(number)")
+
+addToCart(sku: "SKU-002", quantityText: "2", cart: &cart, priceList: priceList)
+
