@@ -72,7 +72,7 @@ func validateSKU (_ sku: String?){
 // MARK: - Bài 09 - Kiểm tra giá tiền
 // =======================================================
 
-func ValidatePrice(_ text: String?){
+func validatePrice(_ text: String?){
     printHeader("Bài 9")
     guard let priceText = text, !priceText.isEmpty else{
         print("Chưa nhập giá")
@@ -92,7 +92,7 @@ func ValidatePrice(_ text: String?){
 // MARK: - Bài 10 - Tính thành tiền
 // =======================================================
 
-func CalcTotal (priceText: String?, quantityText: String?){
+func calcTotal (priceText: String?, quantityText: String?){
     printHeader("Bài 10")
     guard let priceString = priceText, !priceString.isEmpty else{
         print("Giá tiền chưa được nhập")
@@ -147,12 +147,27 @@ func createProduct (sku: String?, name: String?, priceText: String?) -> Product?
     return Product(sku: sku, name: name, price: price)
     
 }
+
+// =======================================================
+// MARK: - Bài 12 - Tăng giá trị biến bên ngoài (inout)
+// =======================================================
+
+func increase (_ value: inout Int){
+    value += 1
+}
+
+
 // =======================================================
 // MARK: - Chạy test chương trình
 // =======================================================
-let checkSKU = validateSKU("SKU-100")
-let checkPrice = ValidatePrice("100")
-let to = CalcTotal(priceText: "10000", quantityText: "2")
+validateSKU("SKU-100")
+validatePrice("100")
+calcTotal(priceText: "10000", quantityText: "2")
 if let product = createProduct(sku: "SKU-100", name: "Iphone 12", priceText: "10000"){
     print("Tên sản phẩm: \(product.name), Giá tiền: \(product.price)")
 }
+printHeader("Bài 12")
+var number = 10
+print("value trước khi bị thay đổi \(number)")
+increase(&number)
+print("value sau khi bị thay đổi \(number)")
