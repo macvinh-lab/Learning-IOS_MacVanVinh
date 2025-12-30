@@ -53,3 +53,10 @@ for cars in car {
     carName.append(cars.name)
 }
 print(carName)
+ // Câu 5 - Tạo 1 Set loại xe + in ra số lượng loại xe khác nhau
+print("======Set loại xe=====")
+var setTypeOfCar : Set <String> = []
+for types in typeOfCar {
+    setTypeOfCar.insert(types.nameType)
+}
+print("Số lượng loại xe khác nhau trong Set: \(setTypeOfCar.count)")
