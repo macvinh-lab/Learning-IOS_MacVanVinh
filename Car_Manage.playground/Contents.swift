@@ -60,3 +60,14 @@ for types in typeOfCar {
     setTypeOfCar.insert(types.nameType)
 }
 print("Số lượng loại xe khác nhau trong Set: \(setTypeOfCar.count)")
+
+//Câu 6 - kiểm tra "SUV" và 4 bánh có tồn tại trong Set hay không
+print("====Kiem tra 'SUV' trong Set====")
+if setTypeOfCar.contains("SUV") {
+    print("SUV có tồn tại trong Set")
+}
+else{
+    print("SUV không tồn tại trong Set")
+}
+
+
