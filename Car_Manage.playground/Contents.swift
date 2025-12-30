@@ -69,5 +69,12 @@ if setTypeOfCar.contains("SUV") {
 else{
     print("SUV không tồn tại trong Set")
 }
+// Câu 7 - Tạo Dictionary
+print("====DICTIONARY=====")
+let sameColorCar = Dictionary(grouping: car){$0.color}
 
+//đếm số lượng xe theo từng màu
+for (key, value) in sameColorCar {
+    print("Số lượng xe màu \(key) là: \(value.count)")
+}
 
