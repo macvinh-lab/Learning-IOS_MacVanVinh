@@ -78,3 +78,19 @@ for (key, value) in sameColorCar {
     print("Số lượng xe màu \(key) là: \(value.count)")
 }
 
+// câu 9 - viết hàm lấy danh sách xe theo loại
+func getCarByType(_ typeName: String, carList: [Car], typeList: [TypeOfCar]) -> [Car]{
+    //tìm idType thông qua nameType
+    guard let types = typeList.first(where: {$0.nameType == typeName}) else {
+        print("Không tìm thấy loại xe cần tìm \(typeName)")
+        return []
+    }
+    //lọc car với idType vừa tìm được
+    let filterType = carList.filter{$0.type == types.idType}
+    return filterType
+}
+
+let suv = getCarByType("SUV", carList: car, typeList: typeOfCar)
+suv.forEach {
+    print("\($0.name) : \($0.color) : \($0.type)")
+}
