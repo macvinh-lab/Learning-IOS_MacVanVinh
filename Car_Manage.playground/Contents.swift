@@ -24,11 +24,24 @@ var typeOfCar : [TypeOfCar] = [TypeOfCar(idType: 01, nameType: "Sedan", wheelCou
                                TypeOfCar(idType: 02, nameType: "SUV", wheelCount: 4),
                                TypeOfCar(idType: 03, nameType: "Truck", wheelCount: 6),]
 // In thông tin từng xe
-
+print("====Danh sách các xe=======")
 for cars in car {
     for types in typeOfCar{
         if cars.type == types.idType {
             print("Tên xe: \(cars.name), Màu xe: \(cars.color), Loại xe: \(types.nameType), Số bánh xe: \(types.wheelCount)")
+        }
+    }
+}
+
+// Lọc các xe thoả mãn màu "RED" + 4 bánh - Câu 3
+print("=====Lọc các xe có màu RED & 4 bánh=======")
+for cars in car {
+    for types in typeOfCar{
+        if cars.type == types.idType {
+            if cars.color == "Red" && types.wheelCount == 4
+            {
+                print("Tên xe: \(cars.name), Màu xe: \(cars.color), Loại xe: \(types.nameType), Số bánh xe: \(types.wheelCount)")
+            }
         }
     }
 }
