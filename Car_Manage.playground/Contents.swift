@@ -45,3 +45,11 @@ for cars in car {
         }
     }
 }
+
+// Câu 4 - tạo mảnh chứa tên các xe từ danh sach ban đầu
+print("=====Mảng tên các xe=====")
+var carName : [String] = []
+for cars in car {
+    carName.append(cars.name)
+}
+print(carName)
